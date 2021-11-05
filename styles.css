@@ -1,0 +1,79 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Google Sans";
+  display: flex;
+  justify-content: space-between;
+}
+
+form {
+  padding: 1rem;
+}
+
+button,
+input {
+  outline: none;
+  border: none;
+  color: white;
+  font-family: "Google Sans";
+  padding: 0.5rem 1rem;
+}
+
+input[type="text"] {
+  border: 0.07rem solid #ddd;
+  color: #333;
+}
+
+button {
+  background-color: tomato;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  background-color: green;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  padding: 0.5rem;
+}
+
+h1 {
+  color: #444;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.search-results {
+  max-width: 25vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 100vh;
+  padding: 1rem;
+}
+
+.search-results a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.search-results a:first-child {
+  background-color: tomato;
+}
+
+.search-results a:last-child {
+  background-color: green;
+}
+
+tbody {
+  line-height: 3;
+  /* display: block; */
+}
