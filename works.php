@@ -1,7 +1,5 @@
 <?php 
 
-    echo "Welcome Nigga";
-
     require 'my_add_functions.php';
     include 'other_functions.php';
 

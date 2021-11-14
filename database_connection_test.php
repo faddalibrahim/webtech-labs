@@ -9,4 +9,7 @@ if(!$connection){
 }
 
 
+echo "<h1>Connection Successful</h1>";
+
+
 ?>
