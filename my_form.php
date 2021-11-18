@@ -40,7 +40,7 @@
     <!-- Add Form -->
     <form method="GET" action="results_page.php">
         <h1>Add</h1>
-        <input type="text" placeholder="add.." name="search">
+        <input type="text" placeholder="add.." name="add">
         <input type="submit" value="add"/>
     </form>
 

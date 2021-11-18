@@ -2,8 +2,8 @@
 
 require "database_connection_test.php";
 
-    if(isset($_GET['search'])){
-        $keyword = $_GET['search'];
+    if(isset($_GET['add'])){
+        $keyword = $_GET['add'];
 
         $sql = "INSERT INTO practical_lab_table(search_term) VALUES('$keyword')";
 
