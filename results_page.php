@@ -1,17 +1,18 @@
 <?php
 
-require "database_connection_test.php";
+    require __DIR__."/controller/post_controller.controller.php";
+
 
     if(isset($_GET['add'])){
         $keyword = $_GET['add'];
 
-        $sql = "INSERT INTO practical_lab_table(search_term) VALUES('$keyword')";
+        $posts = new PostController();
 
-        if($connection->query($sql) === TRUE){
+        if($posts->addItem($keyword)){
             echo "$keyword has been added to the database";
         }
         else{
-            echo $connection->error;
+            echo $posts->error;
         }
     }
 

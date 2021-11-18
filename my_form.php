@@ -1,21 +1,15 @@
 <?php
-    require "database_connection_test.php";
 
-    session_start();
-
-    $result = null;
-    $no_result = null;
-
+    $result_object = null;
+    $results_null = null;
     if(isset($_GET['search'])){
         $keyword = $_GET['search'];
-        $_SESSION['keyword'] = $keyword;
 
-
-        $sql = "SELECT * FROM practical_lab_table WHERE `search_term` LIKE '%$keyword%'";
-        $result = $connection->query($sql);
-
-        $no_result = "No results found";
-
+        require __DIR__."/controller/post_controller.controller.php";
+        $posts = new PostController();
+        $result_object = $posts->searchItem($keyword);
+        
+        $results_null = "No results found";
     }
 
 ?>
@@ -53,10 +47,10 @@
 
     <!-- Search Results -->
     <div class="search-results">
-        <?php if($result !== null && $result->num_rows): ?>
+        <?php if($result_object !== null && $result_object->num_rows): ?>
         <table>
-            <caption style="color: #aaa; text-align: left">Search Results( <?php echo $result->num_rows?> )</caption><br>
-            <?php while($row = $result->fetch_assoc()): ?>
+            <caption style="color: #aaa; text-align: left">Search Results( <?php echo $result_object->num_rows?> )</caption><br>
+            <?php while($row = $result_object->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo $row["search_term"] ?></td>
                     <td>
@@ -69,7 +63,7 @@
             <?php else: ?>
                 <h1 style="color: tomato">
                     <?php  
-                        echo $no_result;
+                        echo $results_null;
                     ?>
                 </h1>
             <?php endif; ?>

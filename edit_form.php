@@ -1,27 +1,24 @@
 <?php
-    require "database_connection_test.php";
 
     if(isset($_GET['id'])){
         $id = $_GET['id']; 
 
         if(!is_numeric($id)){
             header("Location: my_form.php");
-        }
-         
+        }       
     }
 
-
     if(isset($_POST['id'])){
+        require __DIR__."/controller/post_controller.controller.php";
+        $posts = new PostController();
+
         $id = $_POST['id']; 
         $update = $_POST['update'];
 
-        $sql = "UPDATE practical_lab_table SET search_term='$update' WHERE lab_id='$id'";
+        $results = $posts->updateItem($update,$id);
 
-        if ($connection->query($sql) === TRUE) {
+        if($results){
             header("Location: my_form.php");
-        } 
-        else {
-            die("Error updating record: " . $connection->error);
         }
 
     }

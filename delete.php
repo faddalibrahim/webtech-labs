@@ -1,5 +1,7 @@
 <?php
-    require "database_connection_test.php";
+
+
+    require __DIR__."/controller/post_controller.controller.php";
 
     if(isset($_GET['id'])){
         $id = $_GET['id']; 
@@ -8,12 +10,15 @@
             header("Location: my_form.php");
         }
 
-        $sql = "DELETE FROM practical_lab_table WHERE lab_id = '$id'";
+        $posts = new PostController();
+        $result_object = $posts->deleteItem($id);
 
-        if ($connection->query($sql) === TRUE) {
+        print_r($result_object);
+
+        if ($result_object) {
             echo "Record deleted successfully";
         } else {
-            echo "Error deleting record: " . $conn->error;
+            echo "Error deleting record: ";
         }
 
 
