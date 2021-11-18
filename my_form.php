@@ -38,14 +38,19 @@
 <body>
 
     <!-- Add Form -->
-    <form method="GET" action="results_page.php">
+    <!-- <form method="GET" action="results_page.php" id="addForm">
         <h1>Add</h1>
         <input type="text" placeholder="add.." name="search">
-        <input type="submit" value="add"/>
+        <input type="submit" value="add" id="addButton"/>
+    </form> -->
+    <form method="GET" id="addForm">
+        <h1>Add</h1>
+        <input type="text" placeholder="add.." id="addFieldInput">
+        <input type="submit" value="add" id="addButton"/>
     </form>
 
     <!-- Search Form -->
-    <form method="GET" action="my_form.php">
+    <form method="GET" action="my_form.php" id="searchForm">
         <h1>Search</h1>
         <input type="text" placeholder="search.." name="search" value="<?php echo $_SESSION['keyword'] ?? "" ?>">
         <input type="submit" value="search"/>
@@ -74,5 +79,43 @@
                 </h1>
             <?php endif; ?>
     </div>  
+
+    <script>
+        
+        const addForm = document.getElementById("addForm");
+
+        addForm.addEventListener("submit", function(e){
+            e.preventDefault();
+            const addField = document.getElementById("addFieldInput");
+
+
+            const formData = new FormData();
+            formData.append("data", addField.value);
+
+
+            const url = "test.php";
+            const options = {
+                method: 'POST',
+                body: formData
+            }
+            fetch(url,options)
+            .then(response => response.text())
+            .then(data => {
+                addField.value = null;
+                alert(data)
+            });
+        })
+
+        function addToDatabse(form, fields = {}, url){
+
+        }
+
+        addToDatabse(addForm, )
+
+        function searchDatabse(form, field){
+
+        }
+
+    </script>
 </body>
 </html>
