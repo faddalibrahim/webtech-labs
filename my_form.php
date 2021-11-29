@@ -23,14 +23,8 @@
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
-<style>
-    
-    
-
-    
-</style>
+<style></style>
 <body>
-
     <!-- Add Form -->
     <!-- <form method="GET" action="results_page.php" id="addForm">
         <h1>Add</h1>
@@ -41,13 +35,16 @@
         <h1>Add</h1>
         <input type="text" placeholder="add.." id="addFieldInput">
         <input type="submit" value="add" id="addButton"/>
+        <div style="color: red;display: none" id="error-output-add">invalid input: please, enter only numbers</div>
+        <div style="color: green;display: none" id="correct-output-add">valid input</div>
     </form>
-
+    
     <!-- Search Form -->
     <form method="GET" action="my_form.php" id="searchForm">
         <h1>Search</h1>
         <input type="text" placeholder="search.." name="search" value="<?php echo $_SESSION['keyword'] ?? "" ?>">
         <input type="submit" value="search"/>
+        <div style="color: red">hello</div>
     </form>
 
     <!-- Search Results -->
@@ -75,9 +72,25 @@
     </div>  
 
     <script>
-        
-        const addForm = document.getElementById("addForm");
+        //regex
+        const addField = document.getElementById("addFieldInput");
+        const errorOutputAdd = document.getElementById("error-output-add");
+        const correctOutputAdd = document.getElementById("correct-output-add");
+        const regex = /^\d+$/
+        addField.addEventListener("input",function(e) {
 
+            if(regex.test(e.target.value)){
+                correctOutputAdd.style.display = "block";
+                errorOutputAdd.style.display = "none";
+            }else{
+                 correctOutputAdd.style.display = "none";
+                errorOutputAdd.style.display = "block";
+            }
+        })
+
+
+        // adding to database with ajax 
+        const addForm = document.getElementById("addForm");
         addForm.addEventListener("submit", function(e){
             e.preventDefault();
             const addField = document.getElementById("addFieldInput");
