@@ -33,6 +33,7 @@
     </form> -->
     <form method="GET" id="addForm">
         <h1>Add</h1>
+        <small>Only numbers required!</small><br/>
         <input type="text" placeholder="add.." id="addFieldInput">
         <input type="submit" value="add" id="addButton"/>
         <div style="color: red;display: none" id="error-output-add">invalid input: please, enter only numbers</div>
@@ -44,7 +45,6 @@
         <h1>Search</h1>
         <input type="text" placeholder="search.." name="search" value="<?php echo $_SESSION['keyword'] ?? "" ?>">
         <input type="submit" value="search"/>
-        <div style="color: red">hello</div>
     </form>
 
     <!-- Search Results -->
