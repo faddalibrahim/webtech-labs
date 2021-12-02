@@ -11,6 +11,10 @@
         
         $results_null = "No results found";
     }
+    
+    require __DIR__."/controller/upload.controller.php";
+    $upload = new UploadController();
+    $images = $upload->getAllImages();
 
 ?>
 
@@ -25,6 +29,9 @@
 </head>
 <style></style>
 <body>
+    <?php while($image = $images->fetch_assoc()): ?>
+        <img width="50%" src="<?php echo 'uploaded_files/'.$image['User_image'] ?>"/>
+    <?php endwhile; ?>
     <!-- Add Form -->
     <!-- <form method="GET" action="results_page.php" id="addForm">
         <h1>Add</h1>
@@ -38,6 +45,11 @@
         <input type="submit" value="add" id="addButton"/>
         <div style="color: red;display: none" id="error-output-add">invalid input: please, enter only numbers</div>
         <div style="color: green;display: none" id="correct-output-add">valid input</div>
+    </form>
+
+    <form action="handle_upload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" id="" style="color: black">
+        <input type="submit" value="upload" name ="upload">
     </form>
     
     <!-- Search Form -->
@@ -76,7 +88,8 @@
         const addField = document.getElementById("addFieldInput");
         const errorOutputAdd = document.getElementById("error-output-add");
         const correctOutputAdd = document.getElementById("correct-output-add");
-        const regex = /^\d+$/
+        const regex = /^\d+$/;
+        
         addField.addEventListener("input",function(e) {
 
             if(regex.test(e.target.value)){
@@ -113,15 +126,7 @@
             });
         })
 
-        function addToDatabse(form, fields = {}, url){
-
-        }
-
-        // addToDatabse(addForm, )
-
-        function searchDatabse(form, field){
-
-        }
+       
 
     </script>
 </body>

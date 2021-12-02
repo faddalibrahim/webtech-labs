@@ -16,7 +16,6 @@
                 die("Database connection failed: " . $this->db->connect_error);
             }
             
-            echo "<h1>Connection Successful</h1>";
             return $this->connection;
         }
     }

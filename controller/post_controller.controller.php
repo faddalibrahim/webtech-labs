@@ -8,21 +8,6 @@
             print_r($results);
         }
 
-        public function addItem($item){
-            return $this->addToDatabase($item);
-        }
-
-        public function searchItem($keyword){
-            return $this->searchDatabase($keyword);
-        }
-
-        public function deleteItem($id){
-            return $this->deleteFromDatabase($id);
-        }
-
-        public function updateItem($update,$id){
-            return $this->updateDatabase($update,$id);
-        }
     }
 
 
